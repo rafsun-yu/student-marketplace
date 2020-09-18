@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+
+    <!-- CSS & Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Css/style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header class="d-flex">
+
+        <div class="image mr-auto">
+            <h1>LOGO</h1>
+        </div>
+
+        <div class="search-bar mr-auto align-self-center">
+            <ul class="d-flex m-auto align-items-center w-100">
+                <li><input class="" type="text" placeholder="Search"></li>
+                <li><a href=""><button class="search"><i class="fas fa-search"></i></button></a></li>
+            </ul>
+        </div>
+
+        <div class="align-self-center">
+            <ul class="nav-items d-flex m-auto align-items-center justify-content-center">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="">Items</a></li>
+                <li><a href="">Categories</a></li>
+            </ul>
+        </div>
+
+        <div class="align-self-center ml-auto">
+            <button class="login"><a href="">Logout</a></button>
+        </div>
+
+    </header>
+
+    <div class="container">
+        <div class="row mt-5" style="height: 450px;">
+            <div class="col-md-8">
+                <div class="mycart">
+                    <h3>My cart</h3>
+                    <h3>Total: <span>1000</span> tk.</h3>
+                </div>
+                <div class="item-details">
+                    <div class="item-desc">
+                        <img src="../images/1235.png" alt="" style="height: 80px; width: 80px;">
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <h4 style="vertical-align: middle; text-align: left;">Title</h4>
+                            <p style="vertical-align: middle; text-align: left;">Description</p>
+                        </div>
+                        <div class="quantity">
+                            <button style="width: 25px;">-</button>
+                            <span style="width: 25px; text-align: center;">1</span>
+                            <button style="width: 25px;">+</button>
+                        </div>
+                        <div style="float: right; vertical-align: middle;">
+                            <p>Price</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="checkout-summary">
+                    <h4>Checkout Summary</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
