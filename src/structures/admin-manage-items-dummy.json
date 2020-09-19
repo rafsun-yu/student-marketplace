@@ -1,0 +1,9 @@
+[
+    {
+        "item_id": "123",
+        "title": "Item 1",
+        "seller_id": "456",
+        "seller_name": "Rafsun",
+        "featured": true
+    }
+]

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="seller.manage.css" />
+  <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../lib/jquery-3.5.1.min.js"></script>
+  <script src="seller-manage.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid" id="mng-cont">
+    <div id="seller-mng-cont-up">
+      <div id="seller-wallet">
+        <span>Balance: <span id="balance-amount">0.00</span> tk (<a href="#">Withdraw</a>)</span>
+      </div>
+      <button id="add-new-item" type="button" class="btn btn-primary">Add new item</button>
+    </div>
+    <div id="seller-mng-cont-bottom">
+      <table id="mng-table" class="table table-striped">
+        <tr>
+          <th>#ID</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        <tr>
+          <td>#ID</td>
+          <td>Title</td>
+          <td>Price</td>
+          <td>Status</td>
+          <td><button type="button" class="btn btn-link edit-button" data-item-id="">Edit</button></td>
+          <td><button type="button" class="btn btn-link delete-button" data-item-id="">Delete</button></td>
+        </tr>
+        <tr>
+          <td>#ID</td>
+          <td>Title</td>
+          <td>Price</td>
+          <td>Status</td>
+          <td><button type="button" class="btn btn-link edit-button" data-item-id="">Edit</button></td>
+          <td><button type="button" class="btn btn-link delete-button" data-item-id="">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
