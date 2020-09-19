@@ -170,17 +170,20 @@ ul {
   height: 300px;
   width: 100%;
   background-color: #e7e7e7ec;
+  border: 1px solid rgba(129, 129, 129, 0.267);
+  box-shadow: 1px 1px 7px -2px rgba(0, 0, 0, 0.66);
 }
+
 .item-card {
   background-color: rgb(241, 241, 241);
   display: block;
   margin: auto;
-}
-.item-card {
   height: 75%;
   width: 21%;
   padding: 15px 25px;
   position: relative;
+  border-radius: 20px;
+  box-shadow: 1px 1px 7px -2px rgba(0, 0, 0, 0.66);
 }
 .item-card img {
   height: 80px;
@@ -189,6 +192,8 @@ ul {
 .item-card button {
   width: 90px;
   height: 35px;
+  display:block;
+  margin: auto;
   padding: 2px 5px;
   background-color: #f9ab63;
   border: none;
@@ -203,6 +208,7 @@ footer {
   height: 200px;
   background-color: #333;
   margin: 0;
+  margin-top: 30px;
   padding: 50px;
 }
 footer h1 {
