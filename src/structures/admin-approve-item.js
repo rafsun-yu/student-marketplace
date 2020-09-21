@@ -1,17 +1,6 @@
 $(document).ready(function () {
 
-  loadData(updateDom);
-
-  function loadData(callback) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        callback(this.responseText);
-      }
-    };
-    xhttp.open("GET", "admin-approve-item-dummy.json", true);
-    xhttp.send();
-  }
+  httpCall("http://localhost/api/admin-pending-items.php", updateDom);
 
   function updateDom(data) {
     var arr = JSON.parse(data);
@@ -40,29 +29,32 @@ $(document).ready(function () {
   }
 
   $("#mng-table").on("click", ".approve-button", function () {
-    var itemId = $(this).data("itemId");
-    var url = "...";
+    var id = $(this).data("itemId");
 
-    // execute post here
+    httpCall("http://localhost/api/admin-approve-item.php?id=" + id + "&admin_id=" + getCookie("loggedInUserId"), function (data) {
+      var obj = JSON.parse(data);
 
-    if (true) { // Replace true with "Whether API returns success"
-      $(this).closest('tr').remove();
-    } else {
-      alert("Error");
-    }
+      if (obj["success"]) {
+        location.reload();
+      } else {
+        alert("Error");
+      }
+    });
+
   });
 
   $("#mng-table").on("click", ".reject-button", function () {
-    var itemId = $(this).data("itemId");
-    var url = "...";
+    var id = $(this).data("itemId");
 
-    // execute post here
+    httpCall("http://localhost/api/admin-reject-item.php?id=" + id, function (data) {
+      var obj = JSON.parse(data);
 
-    if (true) { // Replace true with "Whether API returns success"
-      $(this).closest('tr').remove();
-    } else {
-      alert("Error");
-    }
+      if (obj["success"]) {
+        location.reload();
+      } else {
+        alert("Error");
+      }
+    });
   });
 
 });
