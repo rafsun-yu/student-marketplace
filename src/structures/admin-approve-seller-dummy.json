@@ -1,8 +1,8 @@
 [
     {
-        "seller_id": "1w23",
-        "seller_name": "Rafsun",
-        "phone": "013...",
+        "id": "1w23",
+        "name": "Rafsun",
+        "phone_no": "013...",
         "address": "Bashundhara"
     }
 ]
