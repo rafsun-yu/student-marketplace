@@ -1,17 +1,6 @@
 $(document).ready(function () {
 
-    loadData(updateDom);
-
-    function loadData(callback) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                callback(this.responseText);
-            }
-        };
-        xhttp.open("GET", "admin-manage-items-dummy.json", true);
-        xhttp.send();
-    }
+    httpCall("http://localhost/api/admin-approved-items.php", updateDom);
 
     function updateDom(data) {
         var arr = JSON.parse(data);
@@ -42,29 +31,37 @@ $(document).ready(function () {
 
     $("#mng-table").on("click", ".feature-button", function () {
         var id = $(this).data("itemId");
-        // Post url
-        var url = "...";
-        // execute post here
+        var base_url = "";
+        var currentStat = $(this).text();
 
-        if (true) { // Replace true with "Whether API returns success"
-            var currentStat = $(this).text();
-            $(this).text((currentStat == "Feature") ? "Unfeature" : "Feature");
-        } else {
-            alert("Error");
-        }
+        if (currentStat == "Feature")
+            base_url = "http://localhost/api/admin-feature-item.php?id=";
+        else
+            base_url = "http://localhost/api/admin-unfeature-item.php?id=";
+
+        httpCall(base_url + id + "&admin_id=" + getCookie("loggedInUserId"), function (data) {
+            var obj = JSON.parse(data);
+
+            if (obj["success"]) {
+                location.reload();
+            } else {
+                alert("Error");
+            }
+        });
     });
 
     $("#mng-table").on("click", ".delete-button", function () {
         var id = $(this).data("itemId");
-        // Post url
-        var url = "...";
-        // execute post here
 
-        if (true) { // Replace true with "Whether API returns success"
-            $(this).closest('tr').remove();
-        } else {
-            alert("Error");
-        }
+        httpCall("http://localhost/api/delete-item.php?id=" + id + "&user_id=" + getCookie("loggedInUserId"), function (data) {
+            var obj = JSON.parse(data);
+
+            if (obj["success"]) {
+                location.reload();
+            } else {
+                alert("Error");
+            }
+        });
     });
 
     $("#mng-table").on("click", ".reports-button", function () {
