@@ -1,29 +1,22 @@
 $(document).ready(function () {
 
-    loadData(updateDom);
+    // Get balance
+    httpCall("http://localhost/api/seller-get-earned-money.php?id=" + getCookie("loggedInUserId"), function (data) {
+        var obj = JSON.parse(data);
+        $("#balance-amount").text(obj["balance"]);
+    });
 
-    function loadData(callback) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                callback(this.responseText);
-            }
-        };
-        xhttp.open("GET", "seller-manage-dummy.json", true);
-        xhttp.send();
-    }
+    // Get items
+    httpCall("http://localhost/api/seller-get-items.php?id=" + getCookie("loggedInUserId"), updateDom);
 
     function updateDom(data) {
-        var obj = JSON.parse(data);
+        var arr = JSON.parse(data);
 
-        if (obj["error"]) {
-            alert(obj["error"]);
+        if (arr["error"]) {
+            alert(arr["error"]);
             return;
         }
 
-        $("#balance-amount").text(obj["balance"]);
-
-        var arr = obj["items"];
         for (i = 0; i < arr.length; i++) {
             var tr = "<tr>";
             tr += "<td>" + arr[i]["item_id"] + "</td>";
@@ -46,16 +39,16 @@ $(document).ready(function () {
 
     $("#mng-table").on("click", ".delete-button", function () {
         var id = $(this).data("itemId");
-        var url = "...";
 
-        // execute post here
+        httpCall("http://localhost/api/delete-item.php?id=" + id + "&user_id=" + getCookie("loggedInUserId"), function (data) {
+            var obj = JSON.parse(data);
 
-        if (true) { // Replace true with "Whether API returns success"
-            // Open URL with manage reviews
-            console.log(id);
-        } else {
-            alert("Error.");
-        }
+            if (obj["success"]) {
+                location.reload();
+            } else {
+                alert("Error");
+            }
+        });
     });
 
     $("#mng-table").on("click", ".edit-button", function () {
@@ -63,5 +56,4 @@ $(document).ready(function () {
         var url = "seller-item.html?id=" + id;
         window.open(url, "_self");
     });
-
 });
