@@ -66,7 +66,7 @@ $(document).ready(function () {
 
     $("#mng-table").on("click", ".reports-button", function () {
         var id = $(this).data("itemId");
-        var url = "admin-manage-reports.html?id=" + id;
+        var url = "manage-reports.html?id=" + id;
         window.open(url, "_self");
     });
 
