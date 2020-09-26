@@ -34,7 +34,7 @@ $(document).ready(function () {
     }
 
     $("#add-new-item").on("click", function () {
-        window.open("seller-item.html", "_self");
+        window.open("modify-item.html", "_self");
     });
 
     $("#mng-table").on("click", ".delete-button", function () {
@@ -53,7 +53,7 @@ $(document).ready(function () {
 
     $("#mng-table").on("click", ".edit-button", function () {
         var id = $(this).data("itemId");
-        var url = "seller-item.html?id=" + id;
+        var url = "modify-item.html?id=" + id;
         window.open(url, "_self");
     });
 });
