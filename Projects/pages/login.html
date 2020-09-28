@@ -16,7 +16,7 @@
     <header class="d-flex">
 
         <div class="image mr-auto">
-            <h1>LOGO</h1>
+            <img src="../images/logo.png" alt="">
         </div>
 
         <div class="search-bar mr-auto align-self-center">
@@ -28,7 +28,8 @@
 
         <div class="align-self-center">
             <ul class="nav-items d-flex m-auto align-items-center justify-content-center">
-                <li><a href="">Items</a></li>
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="items.php">Items</a></li>
                 <li><a href="">Become a seller!</a></li>
             </ul>
         </div>
@@ -39,21 +40,21 @@
 
     </header>
 
-    <form action="">
+    <form action="../api/login.php" method="POST">
         <div class="login-form">
             <h1>Login</h1>
             <div class="user-id">
                 <p>Email/Username</p>
-                <input class="w-100" type="text" placeholder="Enter email or username">
+                <input class="w-100" type="text" placeholder="Enter email or username" name="username">
             </div>
             <div class="user-pass">
                 <p>Password</p>
-                <input class="pw w-100" type="text" placeholder="Enter password">
+                <input class="pw w-100" type="password" placeholder="Enter password" name="password">
                 <input class="d-inline-block mt-2" type="checkbox" name="" id="" style="vertical-align: middle;">
                 <p class="d-inline-block mt-3 ml-3" style="font-size: 90%; vertical-align: middle;">Remember me</p>
             </div>
             <div class="buttons">
-                <button class="user-lg">Login</button>
+                <button class="user-lg" type="submit">Login</button>
                 <p>Don't have an account?</p>
                 <button class="user-reg"><a href="../pages/register.html">Register</a></button>
             </div>
@@ -78,6 +79,11 @@
                     <li><a href="#"><i class="google fab fa-google"></i></a></li>
                     <li><a href="#"><i class="instagram fab fa-instagram"></i></a></li>
                 </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 copyright">
+                <p>All rights reserved. Copyright Student Market <sup>&#169</sup></p>
             </div>
         </div>
     </footer>

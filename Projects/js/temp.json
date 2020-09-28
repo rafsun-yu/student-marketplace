@@ -1,0 +1,14 @@
+[
+    {
+      "id": "10567",
+      "image_url": "https://cdn.pixabay.com/photo/2015/11/19/21/10/knowledge-1052010_960_720.jpg",
+      "title": "ENG103 - Introduction to Composition",
+      "price": "150"
+    },
+    {
+      "id": "10897",
+      "image_url": "https://cdn.pixabay.com/photo/2018/01/17/18/43/book-3088775_960_720.jpg",
+      "title": "MAT120 - CALCULUS I",
+      "price": "365"
+    }
+]
