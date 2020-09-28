@@ -4,19 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSU Market</title>
+    <title>Student Market</title>
     <!-- CSS & Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-
 </head>
 
 <body>
     <header class="d-flex">
 
         <div class="image mr-auto">
-            <img src="../images/logo.png" alt="">
+            <h1>LOGO</h1>
         </div>
 
         <div class="search-bar mr-auto align-self-center">
@@ -28,63 +27,50 @@
 
         <div class="align-self-center">
             <ul class="nav-items d-flex m-auto align-items-center justify-content-center">
-                <li><a href="../index.php">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="items.html">Items</a></li>
             </ul>
         </div>
 
         <div class="align-self-center ml-auto">
-            <button class="login"><a href="../pages/login.html">Login</a></button>
+            <button class="login"><a href="pages/login.html">Login</a></button>
+            <button class="register"><a href="pages/register.html">Register</a></button>
         </div>
 
     </header>
 
-    <form action="../api/register.php" method="POST" id="reg-form">
-        <div class="reg-form">
-            <h1>Register</h1>
-            <div class="">
-                <p>First name</p>
-                <input class="w-100" type="text" placeholder="Enter first name" name="fname">
+    <a href="pages/cart.html">
+        <div class="stickycart">
+            <div class="itemcount">
+                <i class="fas fa-cart-plus"></i>
+                <p><span id="count">0</span> Items</p>
             </div>
-            <div class="">
-                <p>Last name</p>
-                <input class="w-100" type="text" placeholder="Enter last name" name="lname" required>
-            </div>
-            <div class="">
-                <p>Username</p>
-                <input class="w-100" type="text" placeholder="Enter username" name="username" required>
-            </div>
-            <div class="">
-                <p>Phone</p>
-                <input class="w-100" type="number" placeholder="Enter phone number" name="phone" required>
-            </div>
-            <div class="">
-                <p>Email</p>
-                <input class="w-100" type="email" placeholder="Enter email address" name="email" required>
-            </div>
-            <div class="">
-                <p>Address</p>
-                <input class="w-100" type="text" placeholder="Enter home address" name="address">
-            </div>
-            <div class="">
-                <p>Password</p>
-                <input class="w-100" id="pass" type="password" placeholder="Enter password" name="password" required>
-            </div>
-            <div class="">
-                <p>City</p>
-                <input class="w-100" type="text" placeholder="Enter city" name="city"> 
-            </div>
-            <div>
-                <p>Re-enter password</p>
-                <input class="w-100" id="repass" type="password" placeholder="Re-enter password" name="confirm_pass" required>
-                <p id="match" style="font-size: 85%;"></p>
-            </div>
-            <div class=""></div>
-            <div class="reg-btn">
-                <button class="user-lg" type="submit">Register</button>
+            <div class="total">
+                <span>Tk.</span>
+                <span>0</span>
             </div>
         </div>
-    </form>
+    </a>
+
+    <div class="container">
+
+        <Section class="mt-4">
+            <div class="row" id = "row">
+                <div class="col-md-3">
+                    <div class="item-display">
+                        <div class="item-image">
+                            <img src="https://cdn.pixabay.com/photo/2020/09/14/18/17/old-man-5571696_960_720.jpg">
+                        </div>
+                        <h1>Title</h1>
+                        <p><span>100</span> Tk.</p>
+                        <button class="addcart">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </Section>
+    </div>
+
+
 
     <footer>
         <div class="row">
@@ -106,11 +92,6 @@
                 </ul>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 copyright">
-                <p>All rights reserved. Copyright Student Market <sup>&#169</sup></p>
-            </div>
-        </div>
     </footer>
 
 
@@ -123,7 +104,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <script src="../js/register.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- <script src="../js/get-items.js"></script> -->    
+    <script src="../js/temp.js"></script>
+    
+    
 
 </body>
 

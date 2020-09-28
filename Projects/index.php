@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(isset($_SESSION['name'])){
+        $username = $_SESSION['name'];
+    }    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,26 +22,35 @@
     <header class="d-flex">
 
         <div class="image mr-auto">
-            <h1>LOGO</h1>
+            <img src="images/logo.png" alt="">
         </div>
 
-        <div class="search-bar mr-auto align-self-center">
+        <form action="./api/search.php" method="post" class="search-bar mr-auto align-self-center">
             <ul class="d-flex m-auto align-items-center w-100">
-                <li><input class="" type="text" placeholder="Search"></li>
-                <li><a href=""><button class="search"><i class="fas fa-search"></i></button></a></li>
+                <li><input class="" type="text" placeholder="Search" name="search"></li>
+                <li><a href=""><button type="submit" name="submit" class="search"><i
+                                class="fas fa-search"></i></button></a></li>
             </ul>
-        </div>
+
+        </form>
 
         <div class="align-self-center">
             <ul class="nav-items d-flex m-auto align-items-center justify-content-center">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="">Items</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="pages/items.php">Items</a></li>
             </ul>
         </div>
 
         <div class="align-self-center ml-auto">
-            <button class="login"><a href="pages/login.html">Login</a></button>
-            <button class="register"><a href="pages/register.html">Register</a></button>
+            <?php
+                if(isset($_SESSION['name'])){
+                    echo '<button class="login"><a href="./api/logout.php">Logout</a></button>';
+                }else{
+                    echo '<button class="login"><a href="pages/login.html">Login</a></button>
+                    <button class="register"><a href="pages/register.html">Register</a></button>';
+                    
+                }
+            ?>            
         </div>
 
     </header>
@@ -62,11 +77,11 @@
                         <h1>Categories</h1>
                         <div class="categories">
                             <ul>
-                                <li><a href="#">A</a></li>
-                                <li><a href="#">B</a></li>
-                                <li><a href="#">C</a></li>
-                                <li><a href="#">D</a></li>
-                                <li><a href="#">E</a></li>
+                                <li><a href="./api/get_category_items.php?id=Books">Books</a></li>
+                                <li><a href="./api/get_category_items.php?id=Tuitions">Tuitions</a></li>
+                                <li><a href="./api/get_category_items.php?id=Notes">Notes & Solutions</a></li>
+                                <li><a href="./api/get_category_items.php?id=Accessories">Accessories</a></li>
+                                <li><a href="./api/get_category_items.php?id=Others">Others</a></li>
                             </ul>
                         </div>
                     </div>
@@ -78,9 +93,10 @@
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                         </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
+                        <div id="carousel-inner" class="carousel-inner">
+                            <!-- <div class="carousel-item active">
                                 <img class="d-block w-100" src="images/books.jpg" alt="First slide">
                             </div>
                             <div class="carousel-item">
@@ -88,7 +104,7 @@
                             </div>
                             <div class="carousel-item">
                                 <img class="d-block w-100" src="images/books.jpg" alt="Third slide">
-                            </div>
+                            </div> -->
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                             data-slide="prev">
@@ -111,35 +127,7 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
                     <h1>Featured Items</h1>
-                    <div class="d-flex align-items-center m-auto card-holder">
-
-                        <div class="item-card">
-                            <img src="images/1235.png" alt="">
-                            <h4>Title</h4>
-                            <p><span>100</span> Tk.</p>
-                            <button class = "addcart"> Add to Cart</button>
-                        </div>
-
-                        <div class="item-card">
-                            <img src="images/1235.png" alt="">
-                            <h4>Title2</h4>
-                            <p><span>150</span> Tk.</p>
-                            <button class = "addcart"> Add to Cart</button>
-                        </div>
-
-                        <div class="item-card">
-                            <img src="images/1235.png" alt="">
-                            <h4>Title3</h4>
-                            <p><span>50</span> Tk.</p>
-                            <button class = "addcart"> Add to Cart</button>
-                        </div>
-
-                        <div class="item-card">
-                            <img src="images/1235.png" alt="">
-                            <h4>Title4</h4>
-                            <p><span>200</span> Tk.</p>
-                            <button class ="addcart"> Add to Cart</button>
-                        </div>
+                    <div id="feature" class="d-flex align-items-center m-auto card-holder">
 
                     </div>
                 </div>
@@ -149,7 +137,7 @@
 
     </div>
 
-    <footer>
+    <footer style="position: relative;">
         <div class="row">
             <div class="col-md-6">
                 <ul class="footer-nav">
@@ -169,6 +157,11 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 copyright">
+                <p>All rights reserved. Copyright Student Market <sup>&#169</sup></p>
+            </div>
+        </div>
     </footer>
 
 
@@ -182,6 +175,8 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <script src="js/cart.js"></script>
+    <script src="js/get-featured-item.js"></script>
+    
 
 </body>
 
