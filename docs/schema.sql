@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2020 at 05:10 PM
+-- Generation Time: Sep 29, 2020 at 12:27 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -66,25 +66,12 @@ CREATE TABLE `items` (
 --
 
 CREATE TABLE `orders` (
-  `buyer_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `creation_time` datetime NOT NULL,
-  `quantity` int(10) NOT NULL,
-  `unit_price` decimal(10,0) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reports`
---
-
-CREATE TABLE `reports` (
-  `id` int(11) NOT NULL,
-  `buyer_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `creation_time` datetime NOT NULL,
-  `message` varchar(100) NOT NULL
+  `order_id` int(11) NOT NULL,
+  `buyer_id` int(11) DEFAULT NULL,
+  `creation_time` datetime DEFAULT NULL,
+  `item_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `unit_price` decimal(10,0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -140,14 +127,7 @@ ALTER TABLE `items`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`buyer_id`,`item_id`,`creation_time`),
-  ADD KEY `item_id` (`item_id`);
-
---
--- Indexes for table `reports`
---
-ALTER TABLE `reports`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`order_id`),
   ADD KEY `buyer_id` (`buyer_id`),
   ADD KEY `item_id` (`item_id`);
 
@@ -186,28 +166,20 @@ ALTER TABLE `buyers`
 ALTER TABLE `items`
   ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`featurer`) REFERENCES `admins` (`id`),
   ADD CONSTRAINT `items_ibfk_2` FOREIGN KEY (`approver`) REFERENCES `admins` (`id`),
-  ADD CONSTRAINT `items_ibfk_3` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`);
+  ADD CONSTRAINT `items_ibfk_3` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`buyer_id`) REFERENCES `buyers` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `reports`
---
-ALTER TABLE `reports`
-  ADD CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`buyer_id`) REFERENCES `buyers` (`id`),
-  ADD CONSTRAINT `reports_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`buyer_id`) REFERENCES `buyers` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `sellers`
 --
 ALTER TABLE `sellers`
-  ADD CONSTRAINT `sellers_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `sellers_ibfk_2` FOREIGN KEY (`approver`) REFERENCES `admins` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `sellers_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
