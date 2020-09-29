@@ -1,15 +1,20 @@
+<?php
+    session_start();
+    if(isset($_SESSION['name'])){
+        $username = $_SESSION['name'];
+    }    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSU Market</title>
+    <title>Student Market</title>
     <!-- CSS & Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-
 </head>
 
 <body>
@@ -19,72 +24,59 @@
             <img src="../images/logo.png" alt="">
         </div>
 
-        <div class="search-bar mr-auto align-self-center">
+        <form action="../api/search.php" method="post" class="search-bar mr-auto align-self-center">
             <ul class="d-flex m-auto align-items-center w-100">
-                <li><input class="" type="text" placeholder="Search"></li>
-                <li><a href=""><button class="search"><i class="fas fa-search"></i></button></a></li>
+                <li><input class="" type="text" placeholder="Search" name="search"></li>
+                <li><a href=""><button type="submit" name="submit" class="search"><i
+                                class="fas fa-search"></i></button></a></li>
             </ul>
-        </div>
+
+        </form>
 
         <div class="align-self-center">
             <ul class="nav-items d-flex m-auto align-items-center justify-content-center">
                 <li><a href="../index.php">Home</a></li>
-                <li><a href="items.html">Items</a></li>
+                <li><a href="items.php">Items</a></li>
             </ul>
         </div>
 
         <div class="align-self-center ml-auto">
-            <button class="login"><a href="../pages/login.html">Login</a></button>
+        <?php
+                if(isset($_SESSION['name'])){
+                    echo '<button class="login"><a href="../api/logout.php">Logout</a></button>';
+                }else{
+                    echo '<button class="login"><a href="login.html">Login</a></button>
+                    <button class="register"><a href="register.html">Register</a></button>';
+                    
+                }
+            ?>
         </div>
 
     </header>
 
-    <form action="../api/register.php" method="POST" id="reg-form">
-        <div class="reg-form">
-            <h1>Register</h1>
-            <div class="">
-                <p>First name</p>
-                <input class="w-100" type="text" placeholder="Enter first name" name="fname">
+    <a href="cart.html">
+        <div class="stickycart">
+            <div class="itemcount">
+                <i class="fas fa-cart-plus"></i>
+                <p><span id="count">0</span> Items</p>
             </div>
-            <div class="">
-                <p>Last name</p>
-                <input class="w-100" type="text" placeholder="Enter last name" name="lname" required>
-            </div>
-            <div class="">
-                <p>Username</p>
-                <input class="w-100" type="text" placeholder="Enter username" name="username" required>
-            </div>
-            <div class="">
-                <p>Phone</p>
-                <input class="w-100" type="number" placeholder="Enter phone number" name="phone" required>
-            </div>
-            <div class="">
-                <p>Email</p>
-                <input class="w-100" type="email" placeholder="Enter email address" name="email" required>
-            </div>
-            <div class="">
-                <p>Address</p>
-                <input class="w-100" type="text" placeholder="Enter home address" name="address">
-            </div>
-            <div class="">
-                <p>Password</p>
-                <input class="w-100" id="pass" type="password" placeholder="Enter password" name="password" required>
-            </div>
-            <div class="">
-                <p>City</p>
-                <input class="w-100" type="text" placeholder="Enter city" name="city"> 
-            </div>
-            <div>
-                <p>Re-enter password</p>
-                <input class="w-100" id="repass" type="password" placeholder="Re-enter password" name="confirm_pass" required>
-                <p id="match" style="font-size: 85%;"></p>
-            </div>
-            <div class=""></div>
-            <div class="reg-btn">
-                <button class="user-lg" type="submit">Register</button>
+            <div class="total">
+                <span>Tk.</span>
+                <span>0</span>
             </div>
         </div>
-    </form>
+    </a>
+
+    <div class="container">
+
+        <Section class="mt-4">
+            <div class="row" id = "row">
+                
+            </div>
+        </Section>
+    </div>
+
+
 
     <footer>
         <div class="row">
@@ -113,7 +105,6 @@
         </div>
     </footer>
 
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -123,7 +114,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <script src="../js/register.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../js/get-items.js"></script>  
+    <script src="../js/cart.js"></script>
+    
 
 </body>
 
