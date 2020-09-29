@@ -1,21 +1,27 @@
 <?php
 
-$fname = $_POST['fname'];
-$lname = $_POST['lname'];
+$name = $_POST['fname'].' '.$_POST['lname'];
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $confirm_pass = $_POST['confirm_pass'];
 $phone = $_POST['phone'];
-$address = $_POST['address'];
-$city = $_POST['city'];
+$address = $_POST['address'].", ".$_POST['city'];
 
 $connect = mysqli_connect('localhost','root','','student_marketplace');
-$sqlregister = "INSERT INTO register VALUES ('{$fname}','{$lname}','{$username}','{$password}','{$email}',{$phone},'{$address}','{$city}');";
-$sqllogin = "INSERT INTO login VALUES ('{$username}','{$email}','{$password}');";
+if(isset($_POST['seller'])){
+    $sql = "INSERT INTO users VALUES ('{$username}','{$name}','{$phone}','{$address}');";
+    $sql_login = "INSERT INTO login VALUES ('{$username}','{$password}');";
+    $sql_user = "INSERT INTO sellers VALUES ('{$username}',NULL);";
+}else{
+    $sql = "INSERT INTO users VALUES ('{$username}','{$name}','{$phone}','{$address}');";
+    $sql_login = "INSERT INTO login VALUES ('{$username}','{$password}');";
+    $sql_user = "INSERT INTO buyers VALUES ('{$username}');";
+}
 if($password == $confirm_pass){
-    mysqli_query($connect,$sqlregister);
-    mysqli_query($connect,$sqllogin);
+    mysqli_query($connect,$sql);
+    mysqli_query($connect,$sql_login);
+    mysqli_query($connect,$sql_user);
     mysqli_close($connect);
     header('Location: https://localhost/Projects/pages/login.html');
     exit();
