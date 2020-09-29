@@ -20,8 +20,24 @@
       </ul>
     </nav>
 
-    <!-- Content -->
+    <!-- Filter -->
     <h1>Approved items</h1>
+    <div id="filter-box">
+      <div style="display:inline">
+        <label for="title">Title:</label>
+        <input type="text" id="title" />
+      </div>
+      <div style="display:inline">
+        <label for="desc">Seller ID:</label>
+        <input type="text" id="sellerId" />
+      </div>
+      <span>
+        <button id="filter-button" class="btn btn-info">Filter</button>
+        <button id="clear-button" class="btn btn-danger">Clear</button>
+      </span>
+    </div>
+
+    <!-- Table -->
     <table id="mng-table" class="table table-striped">
       <tr>
         <th>#Item ID</th>

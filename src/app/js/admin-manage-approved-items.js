@@ -1,6 +1,9 @@
 $(document).ready(function () {
 
-    httpCall("http://localhost/api/admin-approved-items.php", updateDom);
+    $("#title").val(getUrlParam("title", location.href));
+    $("#sellerId").val(getUrlParam("sellerId", location.href));
+
+    httpCall("http://localhost/api/admin-approved-items.php" + location.search, updateDom);
 
     function updateDom(data) {
         var arr = JSON.parse(data);
@@ -67,6 +70,18 @@ $(document).ready(function () {
     $("#mng-table").on("click", ".reports-button", function () {
         var id = $(this).data("itemId");
         var url = "manage-reports.html?id=" + id;
+        window.open(url, "_self");
+    });
+
+    $("#filter-button").on("click", function () {
+        var title = $("#title").val();
+        var sellerId = $("#sellerId").val();
+        var url = "manage-approved-items.html" + "?title=" + title + "&sellerId=" + sellerId;
+        window.open(url, "_self");
+    });
+
+    $("#clear-button").on("click", function () {
+        var url = "manage-approved-items.html";
         window.open(url, "_self");
     });
 
