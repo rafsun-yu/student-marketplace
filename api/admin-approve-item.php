@@ -15,7 +15,7 @@
     $conn->query($sql);
 
     if ($conn -> affected_rows > 0)
-        echo '{"success":true}'; //change this
+        echo '{"success":true}'; 
     else 
         echo '{"success":false}';
 

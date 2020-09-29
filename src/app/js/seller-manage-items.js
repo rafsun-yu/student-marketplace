@@ -6,6 +6,15 @@ $(document).ready(function () {
         $("#balance-amount").text(obj["balance"]);
     });
 
+    // Check whether seller was approved
+    httpCall("http://localhost/api/seller-is-approved.php?id=" + getCookie("loggedInUserId"), function (data) {
+        var obj = JSON.parse(data);
+
+        if (obj["success"]) {
+            $("#add-new-item").prop('disabled', false);
+        }
+    });
+
     // Get items
     httpCall("http://localhost/api/seller-get-items.php?id=" + getCookie("loggedInUserId"), updateDom);
 
