@@ -1,5 +1,5 @@
 // Delete below line.
-document.cookie = "loggedInUserId=2; path=/";
+//document.cookie = "loggedInUserId=2; path=/";
 
 function httpCall(url, callback) {
     var xhttp = new XMLHttpRequest();
