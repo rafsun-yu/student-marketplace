@@ -2,9 +2,11 @@ var k = 0;
 
 // adding data to local storage
 const addtoCartBtn = document.getElementsByClassName("addcart");
+
 let items = [];
 
 for (let i = 0; i < addtoCartBtn.length; i++) {
+  console.log(addtoCartBtn[i]);
   addtoCartBtn[i].addEventListener("click", function (e) {
 
     if (typeof Storage !== "undefined") {
