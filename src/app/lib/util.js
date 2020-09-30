@@ -36,3 +36,14 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function eraseCookie(name) {
+    document.cookie = name + '=; Max-Age=-99999999;';
+}
+
+function logout() {
+    //document.getElementById("logout-button").onclick = function () {
+    eraseCookie("loggedInUserId");
+    window.open("http://localhost/Projects/pages/login.html", "_self");
+    //}
+}
