@@ -1,5 +1,6 @@
 <?php
     session_start();
     session_destroy();
-    header('Location: https://localhost/Projects/pages/login.html');
+    setcookie('loggedInUserId', "");
+    header('Location: http://localhost/Projects/pages/login.html');
 ?>

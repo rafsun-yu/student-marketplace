@@ -10,16 +10,28 @@ if ($result) {
     $row = mysqli_fetch_assoc($result);
     $array[] = $row;
     if ($array[0]['user_type'] == 'admin') {
-        echo 'Redirecting to admin page';
+        if (mysqli_num_rows($result) == 1) {
+            setcookie('loggedInUserId', $user_id, time() + 3600, "/");
+            session_start();
+            $_SESSION['name'] = $user_id;
+            header('Location: http://localhost/src/admin/manage-approved-items.html');
+        } else {
+            echo "Username or password incorrect";
+        }
     }
     if ($array[0]['user_type'] == 'seller') {
-        echo 'Redirecting to seller page';
+        if (mysqli_num_rows($result) == 1) {
+            setcookie('loggedInUserId', $user_id, time() + 3600, "/");
+            session_start();
+            $_SESSION['name'] = $user_id;
+            header('Location: http://localhost/src/seller/manage-items.html');
+        } else {
+            echo "Username or password incorrect";
+        }
     }
     if ($array[0]['user_type'] == 'buyer') {
         if (mysqli_num_rows($result) == 1) {
-            if (!isset($_COOKIE['name'])) {
-                setcookie('name', $user_id, time() + 3600);
-            }
+            setcookie('loggedInUserId', $user_id, time() + 3600, "/");
             session_start();
             $_SESSION['name'] = $user_id;
             header('Location: http://localhost/Projects/index.php');
