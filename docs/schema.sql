@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2020 at 12:27 PM
+-- Generation Time: Sep 30, 2020 at 06:15 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -57,6 +57,17 @@ CREATE TABLE `items` (
   `featurer` int(11) DEFAULT NULL,
   `approver` int(11) DEFAULT NULL,
   `seller_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `user_id` int(11) NOT NULL,
+  `password` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -124,6 +135,12 @@ ALTER TABLE `items`
   ADD KEY `seller_id` (`seller_id`);
 
 --
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -167,6 +184,12 @@ ALTER TABLE `items`
   ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`featurer`) REFERENCES `admins` (`id`),
   ADD CONSTRAINT `items_ibfk_2` FOREIGN KEY (`approver`) REFERENCES `admins` (`id`),
   ADD CONSTRAINT `items_ibfk_3` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `login`
+--
+ALTER TABLE `login`
+  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `orders`
