@@ -23,7 +23,7 @@ if($password == $confirm_pass){
     mysqli_query($connect,$sql_login);
     mysqli_query($connect,$sql_user);
     mysqli_close($connect);
-    header('Location: https://localhost/Projects/pages/login.html');
+    header('Location: http://localhost/Projects/pages/login.html');
     exit();
 }else{    
     echo '<script>

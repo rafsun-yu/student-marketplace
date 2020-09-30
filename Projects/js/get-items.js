@@ -1,5 +1,5 @@
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "https://localhost/Projects/api/get_items.php", true);
+xmlhttp.open("GET", "http://localhost/Projects/api/get_items.php", true);
 xmlhttp.onload = function () {
   var array = JSON.parse(xmlhttp.responseText);
   var div = "";

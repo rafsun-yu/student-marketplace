@@ -22,7 +22,7 @@ if ($result) {
             }
             session_start();
             $_SESSION['name'] = $user_id;
-            header('Location: https://localhost/Projects/index.php');
+            header('Location: http://localhost/Projects/index.php');
         } else {
             echo "Username or password incorrect";
         }
