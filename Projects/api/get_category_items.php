@@ -7,15 +7,15 @@ if (isset($_SESSION['name'])) {
 
 $id = $_GET['id'];
 if ($id == 'Books') {
-    $sql = 'SELECT id,image_url,title,price FROM Items WHERE category ="Books";';
+    $sql = "SELECT id,image_url,title,description,price FROM Items WHERE category ='Books';";
 } elseif ($id == 'Tuitions') {
-    $sql = 'SELECT id,image_url,title,price FROM Items WHERE category ="Tuitions";';
+    $sql = "SELECT id,image_url,title,description,price FROM Items WHERE category ='Tuitions';";
 } elseif ($id == 'Notes') {
-    $sql = 'SELECT id,image_url,title,price FROM Items WHERE category ="Notes";';
+    $sql = "SELECT id,image_url,title,description,price FROM Items WHERE category ='Notes';";
 } elseif ($id == 'Accessories') {
-    $sql = 'SELECT id,image_url,title,price FROM Items WHERE category ="Accessories";';
+    $sql = "SELECT id,image_url,title,description,price FROM Items WHERE category ='Accessories';";
 } elseif ($id == 'Others') {
-    $sql = 'SELECT id,image_url,title,price FROM Items WHERE category ="Others";';
+    $sql = "SELECT id,image_url,title,description,price FROM Items WHERE category ='Others';";
 }
 
 $connect = mysqli_connect('localhost', 'root', '', 'student_marketplace');
@@ -108,6 +108,7 @@ mysqli_close($connect);
                                 <img src=' . $array[$i]['image_url'] . '>
                             </div>
                             <h1 style="margin-top: 20px;">' . $array[$i]['title'] . '</h1>
+                            <p>' . $array[$i]['description'] . '</p>
                             <p><span>' . $array[$i]['price'] . '</span> Tk.</p>
                             <button class="addcart">Add to cart</button>
                         </div>

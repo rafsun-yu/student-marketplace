@@ -2,7 +2,7 @@
 
     $connect = mysqli_connect('localhost','root','','student_marketplace');
 
-    $sql = 'SELECT id,image_url,title,price FROM Items;';
+    $sql = "SELECT id,image_url,title,description,price FROM Items;";
 
     $result = mysqli_query($connect,$sql);
 
